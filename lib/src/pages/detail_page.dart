@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tele_app/src/pages/call_page.dart';
 import 'package:tele_app/src/theme/light_color.dart';
 import 'package:tele_app/src/model/dactor_model.dart';
 import 'package:tele_app/src/theme/text_styles.dart';
@@ -121,7 +122,13 @@ class _DetailPageState extends State<DetailPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        _actionButton(Icons.call, "Call", () {}),
+        _actionButton(Icons.call, "Call", () {
+
+            Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CallPage()),
+        );
+        }),
         const SizedBox(width: 10),
         _actionButton(Icons.chat_bubble, "Chat", () {}),
         const SizedBox(width: 10),
@@ -132,7 +139,10 @@ class _DetailPageState extends State<DetailPage> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: () {},
+
+          onPressed: () {
+             Navigator.pushNamed(context, '/appointment');
+          },
           child:
               Text("Make an appointment", style: TextStyles.titleNormal.white)
                   .p(10),
